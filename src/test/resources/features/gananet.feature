@@ -10,7 +10,7 @@ Feature: Acceso a la pagina web GanaNet
       When Cuando seleciono el tipo de usuario Alias
       Then Ingreso el usuario "ALIAS"
       Then Hago click en verificar
-      And Obtengo mensaje restrictivo
+      And Obtengo mensaje restrictivo del usuario
 
 
     Scenario Outline: Cuando selecciono Alias y Codigo de persona deberia ser de forma dinamica.

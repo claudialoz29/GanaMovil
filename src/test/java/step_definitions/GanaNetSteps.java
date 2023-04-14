@@ -68,10 +68,10 @@ public class GanaNetSteps implements CommonPage {
 
         }
         //BrowserUtils.getDriver().switchTo().frame(m);
-      // System.out.println(page.alias.getAttribute("value"));
+      System.out.println(page.alias.getAttribute("value"));
        BrowserUtils.sendKeys(page.input, name);
-        //variables = new HashMap<>();
-        //variables.put("Alias", name);
+        variables = new HashMap<>();
+        variables.put("ALIAS", name);
 
     }
 
@@ -128,7 +128,9 @@ public class GanaNetSteps implements CommonPage {
         } else {
             System.out.println(mensaje.getText() + " " + " password incorrecto, vuelva a intentar: " + mens1);
         }
+
     }
+
 
 
 
@@ -166,5 +168,35 @@ public class GanaNetSteps implements CommonPage {
         variables = new HashMap<>();
         variables.put("Alias", value);
         variables.put("Código de persona", value);
+    }
+
+    @And("Obtengo mensaje restrictivo del usuario")
+    public void obtengoMensajeRestrictivoDelUsuario() {
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+
+        }
+        BrowserUtils.waitForPageLoad();
+
+        BrowserUtils.getDriver().switchTo().defaultContent();
+
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+
+        }
+        BrowserUtils.getDriver().switchTo().frame(0);
+
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+
+        }
+        WebElement mensaje = BrowserUtils.getDriver().findElement(By.xpath("//div[@id='swal2-content']"));
+        System.out.println(mensaje.getText());
     }
 }
